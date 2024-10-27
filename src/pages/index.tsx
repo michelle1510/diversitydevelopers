@@ -26,76 +26,65 @@ import {
 } from "@/components/ui/carousel";
 import VanillaTilt from "vanilla-tilt";
 import { motion } from "framer-motion";
+import { exec } from "child_process";
+import {FaInstagram, FaGithub} from 'react-icons/fa';
+import groupmeIcon from '../images/groupme.svg';
+import 'font-awesome/css/font-awesome.min.css';
+import DD_ShachiM from '../images/DD_ShachiM.jpg'
+import DD_DishaP from '../images/DD_DishaP.jpg';
+import DD_MedhaE from '../images/DD_MedhaE.jpg';
+import DD_YashN from '../images/DD_YashN.jpg';
+import DD_VarshaV from '../images/DD_VarshaV.jpg';
+import DD_MichelleL from '../images/DD_MichelleL.jpg';
+import DD_PralayR from '../images/DD_PralayR.jpg';
+import DD_SimonX from '../images/DD_SimonX.jpg';
 
-const aboutStats = [
-  { label: "Years of experience", value: "3+" },
-  { label: "Technologies mastered", value: "5+" },
-  { label: "Companies worked with", value: "15+" },
+const execProfiles = [
+  { label: "President", name: "Shachi Mahajan", image: DD_ShachiM },
+  { label: "Vice President", name: "Disha Patel", image: DD_DishaP},
+  { label: "Treasurer", name: "Medha Elchuri", image: DD_MedhaE},
+  { label: "Marketing", name: "Yash Napa", image: DD_YashN},
+  { label: "Mentorship Lead", name: "Varsha Venkateshwaran", image: DD_VarshaV},
+  { label: "Web Master", name: "Michelle Li", image: DD_MichelleL},
+  { label: "Event Coordinator", name: "Pralay Ray", image: DD_PralayR},
+  { label: "Event Coordinator", name: "Simon Xiao", image: DD_SimonX},
 ];
 
 const projects = [
   {
-    title: "Unqueue",
-    description: "E-commerce platform for selling digital products",
-    image: "/assets/unqueue.webm",
-    href: "https://unqueue.shop/",
+    title: "Mentorship Social",
+    description: "Mentorship Social",
+    image: "/assets/ms1.jpeg",
   },
   {
-    title: "InfiniteVPS",
-    description: "High performance VPS hosting solution",
-    image: "/assets/infinitevps.webm",
-    href: "#",
+    title: "Mentorship Social",
+    description: "",
+    image: "/assets/ms3.jpeg",
   },
   {
-    title: "TranslateBot",
-    description: "Powerful Multilingual Translation Bot for Discord",
-    image: "/assets/translate_bot.webm",
-    href: "https://translatebot.app/",
+    title: "Mentorship Social",
+    description: "",
+    image: "/assets/ms4.jpeg",
   },
   {
-    title: "Wrona",
-    description: "Robotics-focused technology company",
-    image: "/assets/wrona.jpeg",
-    href: "https://www.wrona.com/",
+    title: "Hackathon 2024",
+    description: "Fall Hackathon 2024",
+    image: "/assets/hack5.jpeg",
   },
   {
-    title: "This website",
-    description: "My personal website",
-    image: "/assets/portfolio.webm",
-    href: "https://github.com/wendoj/portfolio",
-  },
-];
-
-const services = [
-  {
-    service: "Frontend Development",
-    description:
-      "Creating stellar user interfaces and web experiences using the latest technologies.",
-    icon: Code2,
+    title: "Hackathon 2024",
+    description: "",
+    image: "/assets/hack2.jpeg",
   },
   {
-    service: "UX Design",
-    description:
-      "Building intuitive, user-centric designs that drive engagement and conversion.",
-    icon: Frame,
+    title: "Hackathon 2024",
+    description: "",
+    image: "/assets/hack3.jpeg",
   },
   {
-    service: "SEO Optimization",
-    description:
-      "Enhancing your website's visibility in search engines for increased organic traffic.",
-    icon: SearchCheck,
-  },
-  {
-    service: "Responsive Design",
-    description:
-      "Designing websites that look and perform equally well on all devices and screen sizes.",
-    icon: MonitorSmartphone,
-  },
-  {
-    service: "Backend Development",
-    description:
-      "Developing robust, scalable server-side logic for a wide range of web applications.",
-    icon: Eye,
+    title: "Hackathon 2024",
+    description: "Congrats to our winners!",
+    image: "/assets/hack6.jpeg",
   },
 ];
 
@@ -125,7 +114,7 @@ export default function Home() {
 
       sections.forEach((section) => {
         const sectionTop = section.offsetTop;
-        if (window.scrollY >= sectionTop - 250) {
+        if (window.scrollY >= sectionTop - 400) {
           current = section.getAttribute("id") ?? "";
         }
       });
@@ -177,10 +166,11 @@ export default function Home() {
       <div ref={refScrollContainer}>
         <Gradient />
 
-        {/* Intro */}
+        {/* Home */}
         <section
           id="home"
           data-scroll-section
+          data-scroll-position="top"
           className="mt-40 flex w-full flex-col items-center xl:mt-0 xl:min-h-screen xl:flex-row xl:justify-between"
         >
           <div className={styles.intro}>
@@ -190,9 +180,6 @@ export default function Home() {
               data-scroll-speed=".09"
               className="flex flex-row items-center space-x-1.5"
             >
-              <span className={styles.pill}>next.js</span>
-              <span className={styles.pill}>tailwindcss</span>
-              <span className={styles.pill}>typescript</span>
             </div>
             <div>
               <h1
@@ -202,11 +189,11 @@ export default function Home() {
                 data-scroll-direction="horizontal"
               >
                 <span className="text-6xl tracking-tighter text-foreground 2xl:text-8xl">
-                  Hello, I&apos;m
+                  Diversity Developers
                   <br />
                 </span>
-                <span className="clash-grotesk text-gradient text-6xl 2xl:text-8xl">
-                  WendoJ.
+                <span className="clash-grotesk text-gradient text-4xl 2xl:text-8xl">
+                  @The Ohio State University.
                 </span>
               </h1>
               <p
@@ -215,8 +202,8 @@ export default function Home() {
                 data-scroll-speed=".06"
                 className="mt-1 max-w-lg tracking-tight text-muted-foreground 2xl:text-xl"
               >
-                An experienced full-stack website developer with a passion for
-                crafting unique digital experiences.
+                Dedicated to promoting general diversity in computing and encouraging those in other fields to gain
+                computing knowledge.
               </p>
             </div>
             <span
@@ -225,11 +212,6 @@ export default function Home() {
               data-scroll-speed=".06"
               className="flex flex-row items-center space-x-1.5 pt-6"
             >
-              <Link href="mailto:wendoj@proton.me" passHref>
-                <Button>
-                  Get in touch <ChevronRight className="ml-1 h-4 w-4" />
-                </Button>
-              </Link>
               <Button
                 variant="outline"
                 onClick={() => scrollTo(document.querySelector("#about"))}
@@ -244,7 +226,7 @@ export default function Home() {
                 isScrolled && styles["scroll--hidden"],
               )}
             >
-              Scroll to discover{" "}
+              Learn more{" "}
               <TriangleDownIcon className="mt-1 animate-bounce" />
             </div>
           </div>
@@ -252,11 +234,14 @@ export default function Home() {
             data-scroll
             data-scroll-speed="-.01"
             id={styles["canvas-container"]}
-            className="mt-14 h-full w-full xl:mt-0"
+            className="mt-14 h-full w-full xl:mt-0 relative"
           >
-            <Suspense fallback={<span>Loading...</span>}>
-              <Spline scene="/assets/scene.splinecode" />
-            </Suspense>
+          <span data-scroll-section className="absolute inset-0">
+            <Spline
+              className={styles.spline}
+              scene="https://prod.spline.design/cfpOqRUESWV35QMo/scene.splinecode"
+            />
+            </span>
           </div>
         </section>
 
@@ -268,29 +253,33 @@ export default function Home() {
             data-scroll-position="top"
             className="my-14 flex max-w-6xl flex-col justify-start space-y-10"
           >
-            <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px]">
-              I&apos;m an experienced full-stack developer proficient in{" "}
-              <Link
-                href="https://create.t3.gg/"
-                target="_blank"
-                className="underline"
-              >
-                TypeScript, Tailwind, and Next.js
-              </Link>{" "}
-              since 2021. My experience spans from startups to mid-sized
-              companies, where I&apos;ve been instrumental in the entire product
-              design process; from ideation and wireframing, through
-              prototyping, to the delivery of the final product, all while
-              efficiently collaborating with cross-functional teams.
+            <h2 className="py-16  pb-2 text-3xl font-light leading-normal tracking-tighter text-foreground xl:text-[40px] mb-40">
+              Diversity Developers was established in 2024. We aim to hold one hacakthon and one conference per year. In our
+              general meetings, we host workshops on various technical and career development skills. Our goal is to provide basic coding 
+              knowledge to anyone who would like to learn. Diversity Developers is catered toward those who are interested in exploring
+              more about the technology sector and learning to code. 
             </h2>
+          </div>
+         </section> 
+
+         <section id="exec" data-scroll-section className="overflow-hidden mt-32">
+            <div className="clash-grotesk text-gradient text-3xl font-semibold tracking-tight xl:text-6xl ml-10 mb-20">
+              Exec Board
+            </div>
             <div className="grid grid-cols-2 gap-8 xl:grid-cols-3">
-              {aboutStats.map((stat) => (
+              {execProfiles.map((stat) => (
                 <div
-                  key={stat.label}
+                  key={`${stat.label}-${stat.name}`}
                   className="flex flex-col items-center text-center xl:items-start xl:text-start"
                 >
-                  <span className="clash-grotesk text-gradient text-4xl font-semibold tracking-tight xl:text-6xl">
-                    {stat.value}
+                <img
+                  src={typeof stat.image === 'string' ? stat.image : stat.image.src}
+                  alt={`${stat.name}'s profile`}
+                  className="w-32 h-32 object-cover rounded-full mb-4"
+                />
+
+                  <span className="clash-grotesk text-gradient text-2xl font-semibold tracking-tight xl:text-6xl">
+                    {stat.name}
                   </span>
                   <span className="tracking-tight text-muted-foreground xl:text-lg">
                     {stat.label}
@@ -298,11 +287,10 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
         </section>
 
-        {/* Projects */}
-        <section id="projects" data-scroll-section>
+        {/* Event Gallery */}
+        <section id="gallery" data-scroll-section>
           {/* Gradient */}
           <div className="relative isolate -z-10">
             <div
@@ -320,14 +308,13 @@ export default function Home() {
           </div>
           <div data-scroll data-scroll-speed=".4" className="my-64">
             <span className="text-gradient clash-grotesk text-sm font-semibold tracking-tighter">
-              ✨ Projects
+              ✨ 
             </span>
             <h2 className="mt-3 text-4xl font-semibold tracking-tight tracking-tighter xl:text-6xl">
-              Streamlined digital experiences.
+              Event Gallery
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;ve worked on a variety of projects, from small websites to
-              large-scale web applications. Here are some of my favorites:
+              Check out some photos from our past events:
             </p>
 
             {/* Carousel */}
@@ -338,16 +325,6 @@ export default function Home() {
                     <CarouselItem key={project.title} className="md:basis-1/2">
                       <Card id="tilt">
                         <CardHeader className="p-0">
-                          <Link href={project.href} target="_blank" passHref>
-                            {project.image.endsWith(".webm") ? (
-                              <video
-                                src={project.image}
-                                autoPlay
-                                loop
-                                muted
-                                className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
-                              />
-                            ) : (
                               <Image
                                 src={project.image}
                                 alt={project.title}
@@ -356,8 +333,6 @@ export default function Home() {
                                 quality={100}
                                 className="aspect-video h-full w-full rounded-t-md bg-primary object-cover"
                               />
-                            )}
-                          </Link>
                         </CardHeader>
                         <CardContent className="absolute bottom-0 w-full bg-background/50 backdrop-blur">
                           <CardTitle className="border-t border-white/5 p-4 text-base font-normal tracking-tighter">
@@ -375,58 +350,51 @@ export default function Home() {
                 <span className="font-semibold">
                   {current} / {count}
                 </span>{" "}
-                projects
+                photos
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services */}
-        <section id="services" data-scroll-section>
-          <div
-            data-scroll
-            data-scroll-speed=".4"
-            data-scroll-position="top"
-            className="my-24 flex flex-col justify-start space-y-10"
-          >
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 1,
-                staggerChildren: 0.5,
-              }}
-              viewport={{ once: true }}
-              className="grid items-center gap-1.5 md:grid-cols-2 xl:grid-cols-3"
-            >
-              <div className="flex flex-col py-6 xl:p-6">
-                <h2 className="text-4xl font-medium tracking-tight">
-                  Need more info?
-                  <br />
-                  <span className="text-gradient clash-grotesk tracking-normal">
-                    I got you.
-                  </span>
-                </h2>
-                <p className="mt-2 tracking-tighter text-secondary-foreground">
-                  Here are some of the services I offer. If you have any
-                  questions, feel free to reach out.
-                </p>
-              </div>
-              {services.map((service) => (
-                <div
-                  key={service.service}
-                  className="flex flex-col items-start rounded-md bg-white/5 p-14 shadow-md backdrop-blur transition duration-300 hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-md"
-                >
-                  <service.icon className="my-6 text-primary" size={20} />
-                  <span className="text-lg tracking-tight text-foreground">
-                    {service.service}
-                  </span>
-                  <span className="mt-2 tracking-tighter text-muted-foreground">
-                    {service.description}
-                  </span>
-                </div>
-              ))}
-            </motion.div>
+        <section id="engage" data-scroll-section className="flex flex-col items-center justify-center">
+          <span className="clash-grotesk text-gradient text-4xl 2xl:text-8xl">
+            Get involved!
+          </span>
+          <div className="Socials mt-10 text-4xl mb-40">
+            <span className="flex items-center space-x-2">
+              <FaInstagram style={{fontSize: '4.5vw', margin: '10'}}/>
+              <Button
+                variant="outline"
+                onClick={() => window.open("https://www.instagram.com/osudevs/", "_blank", "noopener,noreferrer")}
+              >
+                Follow
+              </Button>
+            </span>
+            <span className="flex items-center space-x-2">
+              <FaGithub style = {{fontSize: '4.5vw', margin: '10'}}/>
+              <Button
+                variant="outline"
+                onClick={() => window.open("https://github.com/diversitydevelopersosu", "_blank", "noopener,noreferrer")}
+              >
+                Clone
+              </Button>
+            </span>
+            <span className="flex items-center space-x-2">
+              <img src={groupmeIcon.src} alt="GroupMe" width="33%" height="33%" className="m-2"/>
+              <Button
+                variant="outline"
+                onClick={() => window.open("https://groupme.com/join_group/100306930/vQPkaNoz", "_blank", "noopener,noreferrer")}
+              >
+                Join
+              </Button>
+            </span>
+          </div>
+        </section>
+        <section data-scroll-section className="flex flex-col items-center justify-center">
+          <div className="Calendar mt-10">
+            <iframe src="https://calendar.google.com/calendar/embed?src=diversitydevelopersohiostate%40gmail.com&ctz=America%2FNew_York" 
+              style={{ border: 0, width: '800px', height: '600px' }}
+            ></iframe>
           </div>
         </section>
 
@@ -439,16 +407,14 @@ export default function Home() {
             className="flex flex-col items-center justify-center rounded-lg bg-gradient-to-br from-primary/[6.5%] to-white/5 px-8 py-16 text-center xl:py-24"
           >
             <h2 className="text-4xl font-medium tracking-tighter xl:text-6xl">
-              Let&apos;s work{" "}
-              <span className="text-gradient clash-grotesk">together.</span>
+              Get in Contact with Us
             </h2>
             <p className="mt-1.5 text-base tracking-tight text-muted-foreground xl:text-lg">
-              I&apos;m currently available for freelance work and open to
-              discussing new projects.
+              Questions? Inquiries?
             </p>
-            <Link href="mailto:wendoj@proton.me" passHref>
-              <Button className="mt-6">Get in touch</Button>
-            </Link>
+            <div className="mt-10">
+              <h2>Email: diversitydevelopersohiostate@gmail.com</h2>
+            </div>
           </div>
         </section>
       </div>

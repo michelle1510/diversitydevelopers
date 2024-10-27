@@ -1,3 +1,8 @@
+/* styles.css or your CSS module */
+.section {
+  margin: 40px 0; /* or whatever spacing you want */
+  padding: 20px; /* optional, for inner spacing */
+}
 
 /* hero */
 .intro {
@@ -24,10 +29,15 @@
 }
 
 /* spline canvas */
-#canvas-container
-{
-    @apply bg-background border rounded-3xl h-[515px] xl:w-[690px] xl:min-w-[690px] overflow-hidden;
-
-    /* this fixes the overflow:hidden in Chrome/Opera */
-    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+#canvas-container {
+    @apply bg-background border rounded-3xl h-[515px]; /* Keep fixed height */
+    width: 80%; /* Ensure full width */
+    overflow: hidden; /* Prevent overflow */
 }
+
+/* Adjust the Spline component to fill the parent */
+.spline {
+    @apply w-full h-full; /* Use full width and height of parent */
+}
+
+
